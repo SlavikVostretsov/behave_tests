@@ -30,10 +30,10 @@ class Login(object):
 
     def login_http(self, username, password):
         response = requests.post("http://testing-ground.scraping.pro/login?mode=login", data={"usr": username, "pwd": password})
-        result = {}
-        result["message"] = html.fromstring(response.content).xpath(self.message())[0]
-        result["code"] = response.status_code
-        return result
+        return {
+            "message": html.fromstring(response.content).xpath(self.message())[0],
+            "code": response.status_code
+        }
 
     def check_response_status(self, status, code):
         assert status == code 
