@@ -25,9 +25,9 @@ def step_impl(context):
     driver().refresh()
 
 
-@when('I login through the api with "{username}" name and "{password}" password')    
+@when('I login through the http with "{username}" name and "{password}" password')    
 def step_impl(context, username, password):
-    context.response = login_page.login_api(username, password)
+    context.response = login_page.login_http(username, password)
 
 
 @then('I should get "{response_code}" response code')

@@ -6,3 +6,5 @@
 error_shots/feature_errors
 __pycache__
 __init__.py
+.vscode/
+%allure_result_folder%/

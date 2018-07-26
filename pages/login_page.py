@@ -28,7 +28,7 @@ class Login(object):
     def check_success_login(self, text):
         assert s('#case_login h3').text == text   
 
-    def login_api(self, username, password):
+    def login_http(self, username, password):
         response = requests.post("http://testing-ground.scraping.pro/login?mode=login", data={"usr": username, "pwd": password})
         result = {}
         result["message"] = html.fromstring(response.content).xpath(self.message())[0]
