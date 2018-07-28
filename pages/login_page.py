@@ -25,8 +25,8 @@ class Login(object):
         self.password().set(password)
         self.submit().click()
 
-    def check_success_login(self, text):
-        assert s('#case_login h3').text == text   
+    def get_Message(self):
+        return s('#case_login h3').text
 
     def login_http(self, username, password):
         response = requests.post("http://testing-ground.scraping.pro/login?mode=login", data={"usr": username, "pwd": password})
@@ -34,9 +34,3 @@ class Login(object):
             "message": html.fromstring(response.content).xpath(self.message())[0],
             "code": response.status_code
         }
-
-    def check_response_status(self, status, code):
-        assert status == code 
-
-    def check_response_message(self, value, message):
-        assert value == message

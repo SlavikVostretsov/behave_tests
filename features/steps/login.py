@@ -16,7 +16,8 @@ def step_impl(context, username, password):
 
 @then('I see "{text}" text')
 def step_impl(context, text):
-    login_page.check_success_login(text)
+    message = login_page.get_Message()
+    assert message == text   
 
 
 @when('I refresh cookie')
@@ -32,9 +33,8 @@ def step_impl(context, username, password):
 
 @then('I should get "{response_code}" response code')
 def step_impl(context, response_code):
-    login_page.check_response_status(context.response["code"], int(response_code))
-
+    assert context.response["code"] == int(response_code)
 
 @then('I should get "{message}" message in the response')
 def step_impl(context, message):
-    login_page.check_response_message(context.response["message"], message)
+    assert context.response["message"] == message
